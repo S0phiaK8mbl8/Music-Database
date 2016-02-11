@@ -1,14 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @song.name %>
-</p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @song.rating %>
-</p>
+<div class="row">
+	<div class="col-md-12">
+		<div class="well">
+			<h1><%= @song.name %></h1>
+			<h3><%= link_to @song.artist.name, @song.artist %></h3>
+			<h4><% @song.rating.times do %>
+				<i class="glyphicon glyphicon-star-empty"></i>
+				<% end %>
+			</h4>
+	
+			<% if @song.video.presence %>
+				<div class="video">
+				<iframe width="560" height="315" src="<%= @song.video %>" frameborder="0" allowfullscreen></iframe>
+				</div>
+			<% end %>
 
-<%= link_to 'Edit', edit_song_path(@song) %> |
+		</div>
+	</div>
+</div>
+
+<%= link_to 'Edit', edit_song_path(@song) %>
 <%= link_to 'Back', songs_path %>

@@ -2,11 +2,11 @@
 
 <h1>Songs</h1>
 
-<p>
-  <%= link_to new_song_path do %>
-  <i class="glyphicon glyphicon-plus">Add</i>
-<% end %>
-</p>
+
+
+      <p><%= link_to new_song_path do %><i class="glpyhicon glyphicon-plus">Add</i>
+      <% end %>
+
 
 <div class = "row">
     <% @songs.each do |song| %>
@@ -16,13 +16,19 @@
           <h4><%= song.artist.name %></h4>
           <h4>
 
-            <%= song.rating.times do %>
+            <% song.rating.times do %>
             <i class="glyphicon glyphicon-star-empty"></i>
 
             <% end %>
 
           </h4>
+
           <p>
+              <% if song.video.presence %>
+              <% link_to song do %>
+              <i class="glyphicon glyphicon-play"></i>
+              <% end %>
+              <% end %>
             <%= link_to edit_song_path(song) do %>
             <i class="glyphicon glyphicon-pencil"></i>
             <% end %>
